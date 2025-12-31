@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Well Do You Know Your Sister?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2;
+            color: #d63384;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Comic Sans MS', cursive;
+            color: #ff69b4;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .question {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .question.active {
+            display: block;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option {
+            background-color: #ffb3d9;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #ff99cc;
+        }
+        .option.selected {
+            background-color: #ff69b4;
+            color: white;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #d63384;
+        }
+        .result {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How Well Do You Know Your Sister?</h1>
+        <img src="https://via.placeholder.com/400x200/ff69b4/ffffff?text=Sister+Quiz" alt="Sister Quiz Placeholder">
+        
+        <!-- Questions -->
+        <div id="quiz">
+            <div class="question active" id="q1">
+                <p>What is your sister's favorite color?</p>
+                <div class="options">
+                    <button class="option" data-correct="true">Pink</button>
+                    <button class="option">Blue</button>
+                    <button class="option">Green</button>
+                    <button class="option">Yellow</button>
+                </div>
+            </div>
+            <div class="question" id="q2">
+                <p>What would your sister choose as her favorite hobby?</p>
+                <div class="options">
+                    <button class="option">Reading</button>
+                    <button class="option" data-correct="true">Shopping</button>
+                    <button class="option">Sports</button>
+                    <button class="option">Cooking</button>
+                </div>
+            </div>
+            <div class="question" id="q3">
+                <p>How does your sister like her coffee?</p>
+                <div class="options">
+                    <button class="option">Black</button>
+                    <button class="option" data-correct="true">With cream and sugar</button>
+                    <button class="option">Latte</button>
+                    <button class="option">She doesn't drink coffee</button>
+                </div>
+            </div>
+            <div class="question" id="q4">
+                <p>What is your sister's go-to comfort food?</p>
+                <div class="options">
+                    <button class="option">Pizza</button>
+                    <button class="option" data-correct="true">Chocolate</button>
+                    <button class="option">Ice cream</button>
+                    <button class="option">Pasta</button>
+                </div>
+            </div>
+            <div class="question" id="q5">
+                <p>What kind of music does your sister love?</p>
+                <div class="options">
+                    <button class="option">Pop</button>
+                    <button class="option" data-correct="true">K-pop</button>
+                    <button class="option">Rock</button>
+                    <button class="option">Classical</button>
+                </div>
+            </div>
+            <div class="question" id="q6">
+                <p>How does your sister prefer to spend her weekends?</p>
+                <div class="options">
+                    <button class="option">At home relaxing</button>
+                    <button class="option" data-correct="true">Shopping with friends</button>
+                    <button class="option">Hiking</button>
+                    <button class="option">Watching movies</button>
+                </div>
+            </div>
+            <div class="question" id="q7">
+                <p>What is your sister's favorite season?</p>
+                <div class="options">
+                    <button class="option">Summer</button>
+                    <button class="option" data-correct="true">Spring</button>
+                    <button class="option">Fall</button>
+                    <button class="option">Winter</button>
+                </div>
+            </div>
+            <div class="question" id="q8">
+                <p>What would your sister pick as her dream vacation?</p>
+                <div class="options">
+                    <button class="option">Beach resort</button>
+                    <button class="option" data-correct="true">Paris shopping trip</button>
+                    <button class="option">Mountain adventure</button>
+                    <button class="option">City exploration</button>
+                </div>
+            </div>
+            <div class="question" id="q9">
+                <p>How does your sister handle stress?</p>
+                <div class="options">
+                    <button class="option">Exercise</button>
+                    <button class="option" data-correct="true">Talking to friends</button>
+                    <button class="option">Eating sweets</button>
+                    <button class="option">Meditation</button>
+                </div>
+            </div>
+            <div class="question" id="q10">
+                <p>What is your sister's favorite movie genre?</p>
+                <div class="options">
+                    <button class="option">Action</button>
+                    <button class="option" data-correct="true">Romance</button>
+                    <button class="option">Comedy</button>
+                    <button class="option">Horror</button>
+                </div>
+            </div>
+            <div class="question" id="q11">
+                <p>What does your sister love to wear?</p>
+                <div class="options">
+                    <button class="option">Jeans and t-shirts</button>
+                    <button class="option" data-correct="true">Dresses and skirts</button>
+                    <button class="option">Athletic wear</button>
+                    <button class="option">Pajamas all day</button>
+                </div>
+            </div>
+            <div class="question" id="q12">
+                <p>How does your sister celebrate her birthday?</p>
+                <div class="options">
+                    <button class="option">Quiet dinner</button>
+                    <button class="option" data-correct="true">Party with friends</button>
+                    <button class="option">Trip somewhere</button>
+                    <button class="option">At home with family</button>
+                </div>
+            </div>
+            <div class="question" id="q13">
+                <p>What is your sister's favorite animal?</p>
+                <div class="options">
+                    <button class="option">Dog</button>
+                    <button class="option" data-correct="true">Cat</button>
+                    <button class="option">Rabbit</button>
+                    <button class="option">Bird</button>
+                </div>
+            </div>
+            <div class="question" id="q14">
+                <p>How does your sister like her hair styled?</p>
+                <div class="options">
+                    <button class="option">Ponytail</button>
+                    <button class="option" data-correct="true">Curly and loose</button>
+                    <button class="option">Straight</button>
+                    <button class="option">Braids</button>
+                </div>
+            </div>
+            <div class="question" id="q15">
+                <p>What is your sister's favorite dessert?</p>
+                <div class="options">
+                    <button class="option">Cake</button>
+                    <button class="option" data-correct="true">Cupcakes</button>
+                    <button class="option">Pie</button>
+                    <button class="option">Cookies</button>
+                </div>
+            </div>
+            <div class="question" id="q16">
+                <p>How does your sister feel about makeup?</p>
+                <div class="options">
+                    <button class="option">Minimal</button>
+                    <button class="option" data-correct="true">Full glam</button>
+                    <button class="option">Natural look</button>
+                    <button class="option">None at all</button>
+                </div>
+            </div>
+            <div class="question" id="q17">
+                <p>What would your sister do on a rainy day?</p>
+                <div class="options">
+                    <button class="option">Stay in bed</button>
+                    <button class="option" data-correct="true">Watch rom-coms</button>
+                    <button class="option">Read a book</button>
+                    <button class="option">Bake something</button>
+                </div>
+            </div>
+            <div class="question" id="q18">
+                <p>What is your sister's favorite flower?</p>
+                <div class="options">
+                    <button class="option">Rose</button>
+                    <button class="option" data-correct="true">Lily</button>
+                    <button class="option">Tulip</button>
+                    <button class="option">Sunflower</button>
+                </div>
+            </div>
+            <div class="question" id="q19">
+                <p>How does your sister prefer to communicate?</p>
+                <div class="options">
+                    <button class="option">Phone calls</button>
+                    <button class="option" data-correct="true">Texting with emojis</button>
+                    <button class="option">Emails</button>
+                    <button class="option">In person</button>
+                </div>
+            </div>
+            <div class="question" id="q20">
+                <p>What is your sister's dream job?</p>
+                <div class="options">
+                    <button class="option">Teacher</button>
+                    <button class="option" data-correct="true">Fashion designer</button>
+                    <button class="option">Chef</button>
+                    <button class="option">Artist</button>
+                </div>
+            </div>
+            <div class="question" id="q21">
+                <p>How does your sister react to surprises?</p>
+                <div class="options">
+                    <button class="option">Excited</button>
+                    <button class="option" data-correct="true">Squeals with joy</button>
+                    <button class="option">Calm</button>
+                    <button class="option">Uncomfortable</button>
+                </div>
+            </div>
+            <div class="question" id="q22">
+                <p>What is your sister's favorite scent?</p>
+                <div class="options">
+                    <button class="option">Vanilla</button>
+                    <button class="option" data-correct="true">Lavender</button>
+                    <button class="option">Citrus</button>
+                    <button class="option">Floral</button>
+                </div>
+            </div>
+            <div class="question" id="q23">
+                <p>How does your sister like to exercise?</p>
+                <div class="options">
+                    <button class="option">Running</button>
+                    <button class="option" data-correct="true">Yoga</button>
+                    <button class="option">Dancing</button>
+                    <button class="option">Swimming</button>
+                </div>
+            </div>
+            <div class="question" id="q24">
+                <p>What is your sister's favorite childhood memory?</p>
+                <div class="options">
+                    <button class="option">Playing outside</button>
+                    <button class="option" data-correct="true">Family vacations</button>
+                    <button class="option">School events</button>
+                    <button class="option">Birthday parties</button>
+                </div>
+            </div>
+            <div class="question" id="q25">
+                <p>How does your sister handle arguments?</p>
+                <div class="options">
+                    <button class="option">Yells</button>
+                    <button class="option" data-correct="true">Talks it out calmly</button>
+                    <button class="option">Ignores</button>
+                    <button class="option">Cries</button>
+                </div>
+            </div>
+            <div class="question" id="q26">
+                <p>What is your sister's favorite accessory?</p>
+                <div class="options">
+                    <button class="option">Necklace</button>
+                    <button class="option" data-correct="true">Earrings</button>
+                    <button class="option">Bracelet</button>
+                    <button class="option">Ring</button>
+                </div>
+            </div>
+            <div class="question" id="q27">
+                <p>How does your sister feel about social media?</p>
+                <div class="options">
+                    <button class="option">Loves posting</button>
+                    <button class="option" data-correct="true">Scrolls endlessly</button>
+                    <button class="option">Rarely uses it</button>
+                    <button class="option">Hates it</button>
+                </div>
+            </div>
+            <div class="question" id="q28">
+                <p>What is your sister's favorite emoji?</p>
+                <div class="options">
+                    <button class="option">😊</button>
+                    <button class="option" data-correct="true">💖</button>
+                    <button class="option">😂</button>
+                    <button class="option">😍</button>
+                </div>
+            </div>
+            <div class="question" id="q29">
+                <p>How does your sister prefer her tea?</p>
+                <div class="options">
+                    <button class="option">Green</button>
+                    <button class="option" data-correct="true">Chamomile</button>
+                    <button class="option">Black</button>
+                    <button class="option">Herbal</button>
+                </div>
+            </div>
+            <div class="question" id="q30">
+                <p>What would your sister say is her biggest fear?</p>
+                <div class="options">
+                    <button class="option">Heights</button>
+                    <button class="option" data-correct="true">Being alone</button>
+                    <button class="option">Spiders</button>
+                    <button class="option">Failure</button>
+                </div>
+            </div>
+        </div>
+        
+        <button id="nextBtn">Next</button>
+        <div class="result" id="result">
+            <p id="scoreText"></p>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+        const totalQuestions = 30;
+        const nextBtn = document.getElementById('nextBtn');
+        const resultDiv = document.getElementById('result');
+        const quizDiv = document.getElementById('quiz');
+
+        function showQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+            document.getElementById(`q${num}`).classList.add('active');
+        }
+
+        function selectOption(event) {
+            const question = event.target.closest('.question');
+            question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
+
+        document.querySelectorAll('.option').forEach(opt => {
+            opt.addEventListener('click', selectOption);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const currentQ = document.getElementById(`q${currentQuestion}`);
+            const selected = currentQ.querySelector('.selected');
+            if (selected && selected.hasAttribute('data-correct')) {
+                score++;
+            }
+            currentQuestion++;
+            if (currentQuestion > totalQuestions) {
+                quizDiv.style.display = 'none';
+                nextBtn.style.display = 'none';
+                resultDiv.style.display = 'block';
+                document.getElementById('scoreText').textContent = `Your score: ${score} out of ${totalQuestions}`;
+                let message = '';
+                if (score >= 25) {
+                    message = "Wow! You know your sister like the back of your hand! Sisters forever! 💖";
+                } else if (score >= 15) {
+                    message = "Pretty good! You know a lot about your sister, but there's always more to learn. Keep bonding! 😊";
+                } else {
+                    message = "Not bad, but maybe it's time for a sister chat to get closer! Sisters stick together! 🌸";
+                }
+                document.getElementById('message').textContent = message;
+            } else {
+                showQuestion(currentQuestion);
+            }
+        });
+    </script>
+</body>
+</html>
